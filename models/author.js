@@ -42,7 +42,15 @@ AuthorSchema
 .virtual('lifespan')
   .get(function () {
     return `${this.date_of_birth_formatted} - ${this.date_of_death_formatted}`
+  });
+
+AuthorSchema.virtual('form_date_of_birth').get(function () {
+  return this.date_of_birth ? `${this.date_of_birth.getFullYear()}-${('0' + (this.date_of_birth.getMonth() + 1)).slice(-2)}-${('0' + this.date_of_birth.getDate()).slice(-2)}` : '';
 });
+
+AuthorSchema.virtual('form_date_of_death').get(function () {
+  return this.date_of_deaath ? `${this.date_of_death.getFullYear()}-${('0' + (this.date_of_death.getMonth() + 1)).slice(-2)}-${('0' + this.date_of_death.getDate()).slice(-2)}` : '';
+})
 
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);
