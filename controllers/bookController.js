@@ -82,7 +82,6 @@ exports.book_create_get = function(req, res) {
 };
 
 // Handle book create on POST.
-// Handle book create on POST.
 exports.book_create_post = [
     // Convert the genre to an array.
     (req, res, next) => {
