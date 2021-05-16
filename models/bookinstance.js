@@ -25,5 +25,9 @@ BookInstanceSchema.virtual('due_back_formatted')
     return DateTime.fromJSDate(this.due_back).toLocaleString(DateTime.DATE_MED);
   });
 
+BookInstanceSchema.virtual('form_due_back').get(function () {
+  return `${this.due_back.getFullYear()}-${('0' + (this.due_back.getMonth() + 1)).slice(-2)}-${('0' + this.due_back.getDate()).slice(-2)}`;
+})
+
 //Export model
 module.exports = mongoose.model('BookInstance', BookInstanceSchema);
